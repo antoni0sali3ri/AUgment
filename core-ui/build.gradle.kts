@@ -1,5 +1,5 @@
-apply {
-    from("../sub-common.gradle.kts")
+plugins {
+    id("common-precompiled")
 }
 
 dependencies {

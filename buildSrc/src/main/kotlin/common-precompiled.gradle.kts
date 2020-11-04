@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
 }
 
 android {
@@ -34,14 +34,14 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    add("implementation", fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(Deps.kotlinStdLib)
+    add("implementation", Deps.kotlinStdLib)
 
-    implementation(Deps.coreKtx)
-    implementation(Deps.appcompat)
+    add("implementation", Deps.coreKtx)
+    add("implementation", Deps.appcompat)
 
-    testImplementation(Deps.junit5)
-    androidTestImplementation(Deps.extJunit)
-    androidTestImplementation(Deps.espresso)
+    add("testImplementation", Deps.junit5)
+    add("androidTestImplementation", Deps.extJunit)
+    add("androidTestImplementation", Deps.espresso)
 }
