@@ -5,16 +5,16 @@ plugins {
 }
 
 android {
-    compileSdkVersion(App.compileSdk)
-    buildToolsVersion(App.buildTools)
+    compileSdkVersion(AppConfig.compileSdk)
+    buildToolsVersion(AppConfig.buildTools)
 
     defaultConfig {
-        minSdkVersion(App.minSdk)
-        targetSdkVersion(App.targetSdk)
-        versionCode = App.versionCode
-        versionName = App.versionName
+        minSdkVersion(AppConfig.minSdk)
+        targetSdkVersion(AppConfig.targetSdk)
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
-        testInstrumentationRunner = App.testRunner
+        testInstrumentationRunner = AppConfig.testRunner
     }
 
     buildTypes {
@@ -31,17 +31,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
     add("implementation", fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    add("implementation", Deps.kotlinStdLib)
+    add("implementation", Dependencies.kotlinStdLib)
 
-    add("implementation", Deps.coreKtx)
-    add("implementation", Deps.appcompat)
+    add("implementation", Dependencies.androidx.coreKtx)
+    add("implementation", Dependencies.androidx.appcompat)
 
-    add("testImplementation", Deps.junit5)
-    add("androidTestImplementation", Deps.extJunit)
-    add("androidTestImplementation", Deps.espresso)
+    add("testImplementation", Dependencies.junit5)
 }
