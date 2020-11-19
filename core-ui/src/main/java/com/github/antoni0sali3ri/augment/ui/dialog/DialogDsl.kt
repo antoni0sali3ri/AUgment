@@ -55,8 +55,8 @@ class AlertDialogContract(private val context: Context) {
         }
     }
 
-    sealed class ButtonContract : AlertDialogContract.BaseContract {
-        lateinit var title: String
+    sealed class ButtonContract : BaseContract {
+        var title: String? = null
         var action: (DialogInterface) -> Unit = {}
 
         class Positive : ButtonContract() {
