@@ -45,7 +45,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 groupId = AppConfig.group
-                artifactId = "${rootProject.name.toLowerCase()}-${project.name}"
+                artifactId = project.name
                 version = AppConfig.versionName.snapshot
 
                 from(components["release"])

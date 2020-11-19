@@ -47,8 +47,8 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    add("api", project(":core"))
-    add("api", project(":core-ui"))
+    add("api", project(":augment-core"))
+    add("api", project(":augment-core-ui"))
 
     implementation(Dependencies.kotlinStdLib)
 

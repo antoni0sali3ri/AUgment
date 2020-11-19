@@ -15,6 +15,6 @@ android {
 }
 
 dependencies {
-    add("api", project(":core"))
+    add("api", project(":augment-core"))
     junit5()
 }

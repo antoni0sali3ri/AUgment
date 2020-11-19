@@ -1,6 +1,6 @@
-include(":core", ":core-ui")
+include(":augment-core", ":augment-core-ui")
 
 if (!System.getenv().containsKey("JITPACK"))
-    include(":examples")
+    include(":augment-examples")
 
 rootProject.name = "AUgment"
