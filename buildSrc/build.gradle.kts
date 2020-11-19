@@ -1,6 +1,8 @@
 plugins {
     `kotlin-dsl`
     `kotlin-dsl-precompiled-script-plugins`
+    maven
+    `maven-publish`
 }
 
 repositories {
@@ -13,6 +15,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
 
     dependencies {

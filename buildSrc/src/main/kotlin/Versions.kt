@@ -1,5 +1,7 @@
 object Versions {
 
+    const val augment = "0.1"
+
     const val gradle = "4.1.0"
     const val kotlin = "1.4.10"
 
@@ -19,4 +21,6 @@ object Versions {
     const val robolectric = "1.0.0"
     const val mockito = "1.10.19"
     const val androidTestRunner = "1.2.0"
+
+    val String.snapshot get() = "$this-SNAPSHOT"
 }

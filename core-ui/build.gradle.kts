@@ -9,10 +9,6 @@ kotlin {
 }
 
 android {
-    testOptions {
-        unitTests.isIncludeAndroidResources = true
-    }
-
     packagingOptions {
         exclude("META-INF/LICENSE*")
     }
