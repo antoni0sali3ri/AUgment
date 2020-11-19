@@ -2,24 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/navDialogExamples"
+    android:id="@+id/mobile_navigation">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.github.antoni0sali3ri.augment.examples.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.github.antoni0sali3ri.augment.examples.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.github.antoni0sali3ri.augment.examples.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/navDialogExamples"
+        android:name="com.github.antoni0sali3ri.augment.examples.ui.DialogExamplesFragment"
+        android:label="@string/navLabelDialogExamples"
+        tools:layout="@layout/fragment_dialogs" />
 </navigation>

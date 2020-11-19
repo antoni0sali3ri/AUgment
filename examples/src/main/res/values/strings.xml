@@ -10,4 +10,19 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="resultTextTemplate">User selected: %1$s</string>
+    <string name="btnYesNoDialogTitle">Show Yes/No Dialog</string>
+    <string name="dialogYesNoTitle">Simple Yes/No selection</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dialogYesNoMessage">This is the message. You can explain your choice here.</string>
+    <string name="navLabelDialogExamples">Dialogs</string>
+    <string name="btnTitleShowDialog">Show Dialog</string>
+    <string name="dialogExamleYesNoTitle">Yes/No choice dialog</string>
+    <string name="dialogYesNoDescription">Have the user choose between two options (e.g. Yes/No, OK/Cancel, etc.) and listen for the selected choice</string>
+    <string name="noResult">No selection yet</string>
+    <string name="dialogSingleSelectIntTitle">Select a number</string>
+    <string name="dialogSingleSelectIntMessage">This is the message. Describe what the values below mean here (if necessary).</string>
+    <string name="dialogExampleSingleSelectIntTitle">Single selection (Number)</string>
+    <string name="dialogExampleSingleSelectIntDescription">Have the user choose a single value from a list of predefined options and listen for the selected choice.</string>
 </resources>
