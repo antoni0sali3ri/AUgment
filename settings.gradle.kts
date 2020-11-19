@@ -1,3 +1,6 @@
 include(":core", ":core-ui")
-include(":examples")
+
+if (!System.getenv().containsKey("JITPACK"))
+    include(":examples")
+
 rootProject.name = "AUgment"
