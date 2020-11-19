@@ -1,3 +1,5 @@
+import Versions.snapshot
+
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -37,6 +39,31 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = AppConfig.group
+                artifactId = project.name
+                version = AppConfig.versionName.snapshot
+
+                from(components["release"])
+            }
+/*
+            create<MavenPublication>("debug") {
+                groupId = AppConfig.group
+                artifactId = "${project.name}-debug"
+                version = AppConfig.versionName.snapshot
+
+                from(components["debug"])
+            }
+*/
+        }
+    }
+}
+
+
 
 dependencies {
     add("implementation", fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

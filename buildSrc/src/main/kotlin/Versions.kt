@@ -1,7 +1,5 @@
 object Versions {
 
-    const val augment = "0.1"
-
     const val gradle = "4.1.0"
     const val kotlin = "1.4.10"
 
