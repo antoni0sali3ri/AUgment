@@ -45,20 +45,11 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 groupId = AppConfig.group
-                artifactId = project.name
+                artifactId = "${rootProject.name.toLowerCase()}-${project.name}"
                 version = AppConfig.versionName.snapshot
 
                 from(components["release"])
             }
-/*
-            create<MavenPublication>("debug") {
-                groupId = AppConfig.group
-                artifactId = "${project.name}-debug"
-                version = AppConfig.versionName.snapshot
-
-                from(components["debug"])
-            }
-*/
         }
     }
 }
