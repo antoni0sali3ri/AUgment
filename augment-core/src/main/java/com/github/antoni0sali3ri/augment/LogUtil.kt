@@ -5,7 +5,7 @@ import android.util.Log
 fun String.logTag(): String = take(20)
 
 fun Any.debug(tag: String, msg: String) {
-    if (GlobalOptions.isDebug)
+    if (AugmentGlobalOptions.isDebug)
         Log.d(tag.logTag(), msg)
 }
 
