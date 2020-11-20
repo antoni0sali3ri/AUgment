@@ -4,8 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.github.antoni0sali3ri.auc.Transform
-import com.github.antoni0sali3ri.augment.ui.dialog.AlertDialogContract.Companion.itemsSingle
+import com.github.antoni0sali3ri.augment.Transform
 import com.github.antoni0sali3ri.augment.ui.dialog.TypedDialog.ResultListener
 
 /**

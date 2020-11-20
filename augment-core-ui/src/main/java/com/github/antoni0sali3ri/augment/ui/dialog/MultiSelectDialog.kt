@@ -2,8 +2,7 @@ package com.github.antoni0sali3ri.augment.ui.dialog
 
 import android.app.Dialog
 import android.os.Bundle
-import com.github.antoni0sali3ri.auc.Transform
-import com.github.antoni0sali3ri.augment.ui.dialog.AlertDialogContract.Companion.itemsMultiple
+import com.github.antoni0sali3ri.augment.Transform
 import com.github.antoni0sali3ri.augment.ui.dialog.TypedDialog.ResultListener
 
 class MultiSelectDialog<T>(
