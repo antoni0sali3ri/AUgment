@@ -11,8 +11,11 @@ import android.widget.ListAdapter
 import androidx.annotation.ArrayRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.core.content.res.ResourcesCompat
+import com.github.antoni0sali3ri.augment.UnstableApi
+import com.github.antoni0sali3ri.augment.drawable
+import com.github.antoni0sali3ri.augment.string
 
+@UnstableApi
 class AlertDialogContract(private val context: Context) {
 
     lateinit var title: TitleContract.() -> Unit
@@ -26,8 +29,19 @@ class AlertDialogContract(private val context: Context) {
     }
 
     class TitleContract : BaseContract {
+        /**
+         * Set the title text.
+         */
         var text: String? = null
+
+        /**
+         * Set the icon displayed next to the title.
+         */
         var icon: Drawable? = null
+
+        /**
+         * Set a custom view as the title. Overrides both {text} and {icon}
+         */
         var customView: View? = null
 
         override fun build(builder: AlertDialog.Builder) {
@@ -40,6 +54,9 @@ class AlertDialogContract(private val context: Context) {
         }
     }
 
+    /**
+     * Define the button titles and actions.
+     */
     class ButtonsContract : BaseContract {
         var positive: (ButtonContract.Positive.() -> Unit)? = null
         var negative: (ButtonContract.Negative.() -> Unit)? = null
@@ -56,7 +73,14 @@ class AlertDialogContract(private val context: Context) {
     }
 
     sealed class ButtonContract : BaseContract {
+        /**
+         * Set the button title.
+         */
         var title: String? = null
+
+        /**
+         * Set the action performed on button press.
+         */
         var action: (DialogInterface) -> Unit = {}
 
         class Positive : ButtonContract() {
@@ -78,8 +102,14 @@ class AlertDialogContract(private val context: Context) {
         }
     }
 
+    /**
+     * Set the dialog's content.
+     */
     sealed class ContentContract : BaseContract {
 
+        /**
+         * Set a custom view as the dialog content.
+         */
         class ViewContract : ContentContract() {
             var view: View? = null
 
@@ -92,6 +122,9 @@ class AlertDialogContract(private val context: Context) {
             var values: List<String> = emptyList()
         }
 
+        /**
+         * Set a list of items as the dialog content.
+         */
         class ItemsContract : BaseItemsContract() {
             var action: (DialogInterface, Int) -> Unit = { _, _ -> }
 
@@ -100,6 +133,9 @@ class AlertDialogContract(private val context: Context) {
             }
         }
 
+        /**
+         * Set a list of items (with radio buttons) as the dialog content.
+         */
         class SingleChoiceItemsContract : BaseItemsContract() {
             var checked: Int? = null
             var adapter: ListAdapter? = null
@@ -127,6 +163,9 @@ class AlertDialogContract(private val context: Context) {
             }
         }
 
+        /**
+         * Set a list of items (multi-choice) as the dialog content.
+         */
         class MultiChoiceItemsContract : BaseItemsContract() {
             var action: (DialogInterface, Int, Boolean) -> Unit = { _, _, _ -> }
             var checked: List<Int> = emptyList()
@@ -159,7 +198,7 @@ class AlertDialogContract(private val context: Context) {
     }
 
     fun string(@StringRes stringRes: Int?) =
-        if (stringRes == null) null else context.resources.getString(stringRes)
+        if (stringRes == null) null else context.string(stringRes)
 
     fun array(@ArrayRes arrayRes: Int?) =
         if (arrayRes == null) null else context.resources.getStringArray(arrayRes)
@@ -167,34 +206,30 @@ class AlertDialogContract(private val context: Context) {
     fun drawable(@DrawableRes drawableRes: Int?, theme: Resources.Theme? = null): Drawable? =
         if (drawableRes == null)
             null
-        else ResourcesCompat.getDrawable(
-            context.resources,
-            drawableRes,
-            theme
-        )
+        else
+            context.drawable(drawableRes, theme)
 
+    fun view(view: View): ContentContract =
+        ContentContract.ViewContract().apply { this.view = view }
 
-    companion object {
-        fun view(builder: ContentContract.ViewContract.() -> Unit): ContentContract =
-            ContentContract.ViewContract().apply(builder)
+    fun items(builder: ContentContract.ItemsContract.() -> Unit): ContentContract =
+        ContentContract.ItemsContract().apply(builder)
 
-        fun items(builder: ContentContract.ItemsContract.() -> Unit): ContentContract =
-            ContentContract.ItemsContract().apply(builder)
+    fun itemsSingle(builder: ContentContract.SingleChoiceItemsContract.() -> Unit): ContentContract =
+        ContentContract.SingleChoiceItemsContract()
+            .apply(builder)
 
-        fun itemsSingle(builder: ContentContract.SingleChoiceItemsContract.() -> Unit): ContentContract =
-            ContentContract.SingleChoiceItemsContract()
-                .apply(builder)
-
-        fun itemsMultiple(builder: ContentContract.MultiChoiceItemsContract.() -> Unit): ContentContract =
-            ContentContract.MultiChoiceItemsContract()
-                .apply(builder)
-    }
+    fun itemsMultiple(builder: ContentContract.MultiChoiceItemsContract.() -> Unit): ContentContract =
+        ContentContract.MultiChoiceItemsContract()
+            .apply(builder)
 
 
 }
 
-fun Context.alertDialog(builder: AlertDialogContract.() -> Unit): AlertDialog {
-    val alertDialogBuilder = AlertDialog.Builder(this)
+fun Context.alertDialog(builder: AlertDialogContract.() -> Unit) = alertDialog(0, builder)
+
+fun Context.alertDialog(themeRes: Int, builder: AlertDialogContract.() -> Unit): AlertDialog {
+    val alertDialogBuilder = AlertDialog.Builder(this, themeRes)
     AlertDialogContract(this)
         .apply(builder)
         .build(alertDialogBuilder)
