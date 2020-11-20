@@ -8,6 +8,10 @@ fun DependencyHandlerScope.api(dependency: String) {
     add("api", dependency)
 }
 
+fun DependencyHandlerScope.kapt(dependency: String) {
+    add("kapt", dependency)
+}
+
 fun DependencyHandlerScope.testImplementation(dependency: String) {
     add("testImplementation", dependency)
 }

@@ -20,6 +20,18 @@ object Dependencies {
         const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.androidx.navigation}"
         const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.androidx.navigation}"
 
+        const val roomRuntime = "androidx.room:room-runtime:${Versions.androidx.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Versions.androidx.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Versions.androidx.room}"
+        const val roomTesting = "androidx.room:room-testing:${Versions.androidx.room}"
+
+        fun DependencyHandlerScope.room() {
+            implementation(roomRuntime)
+            kapt(roomCompiler)
+            implementation(roomKtx)
+            testImplementation(roomTesting)
+        }
+
         fun DependencyHandlerScope.lifecycle() {
             implementation(lifecycleLiveDataKtx)
             implementation(lifecycleViewModelKtx)

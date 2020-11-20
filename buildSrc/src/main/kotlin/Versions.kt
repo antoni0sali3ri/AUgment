@@ -10,6 +10,7 @@ object Versions {
         const val constraintLayout = "2.0.4"
         const val appcompat = "1.2.0"
         const val lifecycle = "2.2.0"
+        const val room = "2.2.5"
     }
 
     const val junit4 = "4.12"
