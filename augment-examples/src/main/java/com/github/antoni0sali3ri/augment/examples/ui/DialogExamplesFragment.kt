@@ -38,15 +38,6 @@ class DialogExamplesFragment : Fragment() {
         }
     }
 
-    private fun string(@StringRes stringRes: Int) = requireContext().getString(stringRes)
-
-    private fun format(@StringRes template: Int, @StringRes vararg args: Int) =
-        requireContext().format(template, *args)
-
-    private fun format(@StringRes template: Int, vararg args: String) =
-        requireContext().format(template, *args)
-
-
     data class DialogExample<T>(
         @StringRes val titleRes: Int,
         @StringRes val descRes: Int,
