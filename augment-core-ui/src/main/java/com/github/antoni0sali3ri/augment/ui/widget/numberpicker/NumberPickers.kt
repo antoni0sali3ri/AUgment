@@ -1,6 +1,7 @@
 package com.github.antoni0sali3ri.augment.ui.widget.numberpicker
 
 import android.widget.NumberPicker
+import com.github.antoni0sali3ri.augment.UnstableApi
 
 object NumberPickers {
 
@@ -24,7 +25,10 @@ object NumberPickers {
      * @throws IllegalArgumentException when the specified range of values is smaller than the number
      *                                  of NumberPickers or when any NumberPicker is passed more than once
      */
-    fun setUpAsOrdered(minValue: Int, maxValue: Int, vararg pickers: NumberPicker) {
+    @UnstableApi
+    fun setUpAsOrdered(minValue: Int, maxValue: Int, vararg pickersWithValues: Pair<NumberPicker, Int>) {
+        val pickers = pickersWithValues.map { it.first }
+        val values = listOf(minValue) + pickersWithValues.map {it.second} + listOf(maxValue + 1)
         val pickerCount = pickers.size
         val rangeSize = maxValue - minValue + 1
 
@@ -35,9 +39,10 @@ object NumberPickers {
             "Defined Range [$minValue..$maxValue] is too small to fit $pickerCount NumberPickers!"
         }
 
-        pickers.first().minValue = minValue
-        pickers.last().maxValue = maxValue
         pickers.forEachIndexed { index, picker ->
+            picker.minValue = values[index]
+            picker.maxValue = values[index + 2] - 1
+            picker.value = values[index + 1]
             picker.setOnValueChangedListener { _, _, newVal ->
                 if (index > 0) {
                     pickers[index - 1].maxValue = newVal - 1

@@ -1,7 +1,7 @@
 package com.github.antoni0sali3ri.augment.ui.widget.numberpicker
 
 import android.widget.NumberPicker
-import com.github.antoni0sali3ri.auc.Transform
+import com.github.antoni0sali3ri.augment.Transform
 
 typealias IntTransform = Transform<Int, Any>
 
