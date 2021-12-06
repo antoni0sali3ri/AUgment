@@ -1,5 +1,8 @@
 package com.github.antoni0sali3ri.augment
 
+/**
+ * Require that the elements of a collection are distinct.
+ */
 fun <T> requireDistinct(arg: String, collection: Collection<T>?): Collection<T> {
     val size = requireNotNull(collection).size
     requireArg(
