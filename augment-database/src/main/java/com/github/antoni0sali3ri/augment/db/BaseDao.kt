@@ -1,5 +1,6 @@
 package com.github.antoni0sali3ri.augment.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -12,7 +13,7 @@ import androidx.room.Update
  * @see androidx.room.Entity
  */
 @Dao
-interface BaseDao<T> {
+interface BaseDao<T : RoomEntity> {
 
     @Insert
     fun insert(value: T)
@@ -31,5 +32,11 @@ interface BaseDao<T> {
 
     @Delete
     fun deleteAll(values: List<T>)
+
+    fun deleteById(id: Long)
+
+    fun getSingle(id: Long): T
+
+    fun getAll(): LiveData<List<T>>
 
 }

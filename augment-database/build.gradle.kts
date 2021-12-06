@@ -14,4 +14,5 @@ dependencies {
     junit5()
 
     room()
+    implementation(Dependencies.androidx.lifecycleViewModelKtx)
 }
