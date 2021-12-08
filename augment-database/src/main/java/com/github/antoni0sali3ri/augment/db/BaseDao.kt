@@ -33,7 +33,7 @@ interface BaseDao<T : RoomEntity> {
     @Delete
     fun deleteAll(values: List<T>)
 
-    fun deleteById(id: Long)
+    fun deleteById(id: Long) : Int
 
     fun getSingle(id: Long): T
 

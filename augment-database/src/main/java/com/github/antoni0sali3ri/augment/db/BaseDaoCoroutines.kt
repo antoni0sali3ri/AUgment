@@ -36,7 +36,7 @@ interface BaseDaoCoroutines<T : RoomEntity> {
     @Delete
     suspend fun deleteAll(values: List<T>)
 
-    suspend fun deleteById(id: Long) : T
+    suspend fun deleteById(id: Long) : Int
 
     fun getSingle(id: Long) : T
 
