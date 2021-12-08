@@ -17,4 +17,5 @@ android {
 dependencies {
     add("api", project(":augment-core"))
     junit5()
+    implementation(Dependencies.androidx.recyclerview)
 }

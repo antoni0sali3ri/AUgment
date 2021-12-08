@@ -6,10 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-sealed class EntityViewModel<T : RoomEntity>(application: Application, clazz: Class<T>) :
+class EntityViewModel<T : RoomEntity>(application: Application, val dao: BaseDaoCoroutines<T>) :
     AndroidViewModel(application) {
-
-    protected abstract val dao : BaseDaoCoroutines<T>
 
     val items: LiveData<out List<T>> by lazy { dao.getAll() }
 
